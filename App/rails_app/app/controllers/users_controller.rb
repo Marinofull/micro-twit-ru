@@ -1,5 +1,5 @@
 class UsersController < ApplicationController
-  before_filter :signed_in_user, 
+  before_filter :signed_in_user,
     only: [:index, :edit, :update, :destroy, :following, :followers, :allow, :deny]
   before_filter :correct_user, only: [:edit, :update]
   before_filter :admin_user, only: [:destroy, :index, :allow, :deny]
@@ -36,7 +36,7 @@ class UsersController < ApplicationController
     if @user.update_attributes(user_params)
       flash[:success] = "Perfil atualizado."
       sign_in @user
-      redirect_to @user
+      redirect_to root_path
     else
       render 'edit'
     end
@@ -48,7 +48,7 @@ class UsersController < ApplicationController
     redirect_to users_path
   end
 
-  def following 
+  def following
     @title  = "Following"
     @user   = User.find(params[:id])
     @users  = @user.followed_users.page(params[:page])
@@ -62,13 +62,13 @@ class UsersController < ApplicationController
     render 'show_follow'
   end
 
-  def allow 
+  def allow
     User.find(params[:id]).allow
     flash[:success] = "Usuário ativado"
     redirect_to users_path
   end
 
-  def deny 
+  def deny
     user = User.find(params[:id])
     unless user.admin?
       user.deny

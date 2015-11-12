@@ -1,12 +1,12 @@
 <div class="col-xs-12 status">
   <div class="col-xs-12 status-top">
     <div class="col-xs-4 icon-user">
-      <%= link_to gravatar_for(feed_item.user), feed_item.user %>
+      <%= link_to gravatar_for(feed_item.user), root_path %>
     </div>
     <div class="col-xs-8 status-content">
       <div class="status-content-meta">
         <span class="user-name">
-          <%= link_to feed_item.user.name, feed_item.user %>
+          <%= link_to feed_item.user.name, root_path %>
         </span>
         <span class="elapsed-time">Posted <%= time_ago_in_words(feed_item.created_at) %> ago.</span>
       </div>
@@ -33,7 +33,7 @@
       <% if current_user == feed_item.user %>
         <span class="glyphicon glyphicon-retweet"></span>
       <% else %>
-        <%= link_to "", retweet_micropost_path(feed_item), method: :post, 
+        <%= link_to "", retweet_micropost_path(feed_item), method: :post,
           confirm: "Você tem certeza?", class: "glyphicon glyphicon-retweet" %>
       <% end %>
       <!-- <span class="action-name">n</span> -->
