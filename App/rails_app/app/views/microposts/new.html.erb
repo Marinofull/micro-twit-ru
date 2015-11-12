@@ -1,8 +1,20 @@
+<% provide(:title, "New Post") %>
+<% provide(:glyph, "send") %>
+
 <div class="wrapper">
   <section class="container">
-    <div class="col-md-12">
+    <div class="row">
       <div class="">
         <% @tweets.each do |t| %>
+          <%  if @tweets.index(t) % 3 == 0 %>
+
+            <%  if @tweets.index(t)> 2 %>
+              </div>
+            <% end %>
+
+            <div class="row">
+          <% end %>
+
           <%= form_tag create_post_path(t.id), method: :post, id: "form#{t.id}" do %>
             <a onclick="clickPost(<%= t.id %>)" class="link-newstatus">
               <div class="col-xs-4" style="text-align: center">
@@ -13,7 +25,9 @@
               </div>
             </a>
           <% end %>
+
         <% end %>
+        </div>
       </div>
     </div>
   </section>

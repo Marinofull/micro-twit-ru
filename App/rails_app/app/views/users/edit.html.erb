@@ -1,18 +1,19 @@
 <% provide(:title, "Meu Perfil") %>
 <% provide(:glyph, "user") %>
-<% provide(:header, "layouts/headers/profile") %>
 
-<div class="col-xs-offset-1 col-xs-10 col-md-offset-4 col-md-4">
-  <h2 class="main-content-title">Atualize seu perfil</h2>
-  <%= form_for(@user) do |f| %>
+<div class="wrapper">
+    <div class="row">
+    <div class="col-xs-offset-1 col-xs-10 col-md-offset-4 col-md-4">
+      <%= form_for(@user) do |f| %>
 
-    <%= render 'fields', f: f %>
-    <%= f.submit "Salvar alterações", class: "btn btn-default" %>
 
-  <% end %>
+        <%= render 'fields', f: f %>
 
-  <% if false %>
-    <%= gravatar_for @user %>
-    <%= link_to "change", "http://gravatar.com/emails", target: '_blank' %>
-  <% end %>
+        <%= gravatar_for @user %>
+        <%= link_to "editar", "http://gravatar.com/emails", target: '_blank'%>
+        <br><br><hu3>
+        <%= f.submit "Salvar alterações", class: "btn btn-default" %>
+      <% end %>
+    </div>
+    </div>
 </div>
